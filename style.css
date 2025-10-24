@@ -263,54 +263,36 @@ footer {
 }
 /* Menu hamburguer (mobile) */
 .menu-toggle {
-    display: none;
-    font-size: 2rem;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    z-index: 1001; /* garante que fique acima do nav */
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  position: absolute;
+  top: var(--esp-3);
+  right: var(--esp-3);
 }
 
+/* CSS para nav ativo no mobile */
 @media (max-width: 768px) {
-    nav {
-        position: relative;
-    }
-
     nav ul {
-        display: none; /* escondido por padrão */
-        flex-direction: column;
+        display: flex !important; /* sempre visível */
+        flex-direction: row;       /* horizontal mesmo no mobile */
         background-color: var(--cor-primaria);
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        padding: 16px;
+        position: static;          /* não fica sobreposto */
+        width: auto;
+        padding: 0;
         margin: 0;
-        list-style: none;
-        z-index: 1000;
-    }
-
-    nav.active ul {
-        display: flex; /* mostra quando ativo */
     }
 
     nav ul li {
-        margin-bottom: 12px;
+        margin-bottom: 0;
         text-align: center;
     }
 
     nav ul li a {
-        color: white;
-        text-decoration: none;
-        font-weight: bold;
-        font-size: 1.2rem;
-    }
-
-    .menu-toggle {
-        display: block;
+        font-size: 1rem;  /* ajuste para caber na tela */
     }
 }
+
