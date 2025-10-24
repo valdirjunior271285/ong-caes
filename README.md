@@ -25,3 +25,57 @@ Este site foi criado com fins **educacionais e de conscientização**, promovend
 
 ## 📁 Estrutura do Projeto  
 
+
+---
+
+## 💻 Tecnologias Utilizadas  
+
+| Tecnologia | Descrição |
+|-------------|------------|
+| 🧱 **HTML5** | Estrutura semântica das páginas |
+| 🎨 **CSS3** | Estilização e layout responsivo |
+| 🧰 **Git & GitHub** | Controle de versão e hospedagem no GitHub Pages |
+
+---
+
+## 📸 Páginas do Site  
+
+1. **🏠 Início (`index.html`)** — Apresenta a ONG, missão e formas de contato  
+2. **📋 Projeto (`projeto.html`)** — Explica as ações e projetos sociais desenvolvidos  
+3. **🧑‍🤝‍🧑 Cadastro (`cadastro.html`)** — Permite o cadastro de voluntários  
+
+---
+
+## 🧠 Objetivos do Projeto  
+
+- Praticar a criação de **páginas HTML e CSS**  
+- Aplicar **estrutura semântica** e boas práticas  
+- Utilizar **GitHub Pages** para publicar um site  
+- Desenvolver uma **página institucional acessível e informativa**
+
+---
+
+## 📬 Contato  
+
+📧 **E-mail:** [doacao@ongcaes.org.br](mailto:doacao@ongcaes.org.br)  
+📱 **Telefone:** (83) 99999-0000  
+📍 **Endereço:** Rua dos Animais Felizes, 123 – João Pessoa/PB  
+
+---
+
+## 👨‍💻 Desenvolvedor  
+
+**Valdir Junior Souza Cláudio**  
+📅 *Projeto criado em 2025*  
+💬 *“Ajudar um animal é salvar uma vida!”* 🐕💖  
+
+[![GitHub](https://img.shields.io/badge/GitHub-valdirjunior271285-black?logo=github&style=for-the-badge)](https://github.com/valdirjunior271285)
+
+---
+
+## 📝 Licença  
+
+Este projeto é de uso **livre para fins educacionais e sociais**.  
+Sinta-se à vontade para clonar, adaptar e contribuir!  
+
+---
