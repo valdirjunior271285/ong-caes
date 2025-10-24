@@ -1,0 +1,263 @@
+/* ==========================================================
+   🌞 ONG CÃES - Estilo Principal
+   Desenvolvido por: Valdir Junior Souza Cláudio
+   ========================================================== */
+
+/* ------------------------------
+   🧱 Design System (Variáveis)
+--------------------------------*/
+:root {
+  /* Paleta de cores global */
+  --cor-primaria: #2c7a7b;    /* azul padrão ONG */
+  --cor-secundaria: #319795;  /* azul secundário */
+  --cor-clara: #f7fafc;       /* fundo claro */
+  --cor-media: #e2e8f0;       /* tons intermediários */
+  --cor-escura: #1a202c;      /* textos */
+  --cor-sucesso: #38a169;
+  --cor-alerta: #dd6b20;
+  --cor-erro: #e53e3e;
+
+  /* Tipografia */
+  --font-grande: 2.5rem;
+  --font-media: 1.75rem;
+  --font-normal: 1rem;
+  --font-pequena: 0.875rem;
+  --font-micro: 0.75rem;
+
+  /* Espaçamentos */
+  --esp-1: 8px;
+  --esp-2: 16px;
+  --esp-3: 24px;
+  --esp-4: 32px;
+  --esp-5: 48px;
+  --esp-6: 64px;
+}
+
+/* ------------------------------
+   ⚙️ Reset e Estrutura Base
+--------------------------------*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", Arial, sans-serif;
+  color: var(--cor-escura);
+  background-color: var(--cor-clara);
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* ------------------------------
+   🧭 Cabeçalho e Navegação
+--------------------------------*/
+header {
+  background-color: var(--cor-primaria);
+  color: white;
+  padding: var(--esp-3);
+  text-align: center;
+  position: relative;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  gap: var(--esp-3);
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: var(--cor-media);
+}
+
+/* Menu hamburguer (mobile) */
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  position: absolute;
+  top: var(--esp-3);
+  right: var(--esp-3);
+}
+
+/* ------------------------------
+   🧩 Estrutura Principal
+--------------------------------*/
+main {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--esp-4);
+  padding: var(--esp-4);
+}
+
+/* Imagens topo */
+.imagens-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-2);
+  margin-bottom: var(--esp-4);
+  align-items: center;
+}
+
+.imagens-container img {
+  width: 100%;
+  max-width: 800px;
+  border-radius: 10px;
+}
+
+/* Formulário centralizado */
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: var(--esp-3);
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.form-container fieldset {
+  border: 1px solid var(--cor-media);
+  border-radius: 8px;
+  padding: var(--esp-2);
+  margin-bottom: var(--esp-3);
+}
+
+section {
+  grid-column: span 12;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: var(--esp-4);
+  margin-bottom: var(--esp-4);
+}
+
+h1, h2 {
+  color: var(--cor-primaria);
+  margin-bottom: var(--esp-2);
+}
+
+h1 { font-size: var(--font-grande); }
+h2 { font-size: var(--font-media); }
+
+/* ------------------------------
+   💬 Cards e Componentes
+--------------------------------*/
+.card {
+  background: var(--cor-clara);
+  border-radius: 10px;
+  padding: var(--esp-3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.badge {
+  display: inline-block;
+  background: var(--cor-primaria);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: var(--font-micro);
+  margin-right: var(--esp-1);
+}
+
+/* ------------------------------
+   🔘 Botões
+--------------------------------*/
+button, a.button {
+  background: var(--cor-primaria);
+  color: white;
+  padding: var(--esp-2) var(--esp-3);
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+}
+
+button:hover, a.button:hover { background: var(--cor-secundaria); }
+
+button:disabled {
+  background: var(--cor-media);
+  cursor: not-allowed;
+}
+
+/* ------------------------------
+   🧍 Formulários
+--------------------------------*/
+input, textarea, select {
+  border: 2px solid var(--cor-media);
+  border-radius: 6px;
+  padding: var(--esp-2);
+  width: 100%;
+  margin-bottom: var(--esp-2);
+  font-size: var(--font-normal);
+}
+
+input:focus, textarea:focus {
+  border-color: var(--cor-primaria);
+  outline: none;
+  box-shadow: 0 0 5px var(--cor-secundaria);
+}
+
+/* ------------------------------
+   ⚠️ Alerts e Feedbacks
+--------------------------------*/
+.alert {
+  padding: var(--esp-2);
+  border-radius: 8px;
+  margin-top: var(--esp-2);
+  color: white;
+  font-weight: bold;
+}
+
+.alert.success { background: var(--cor-sucesso); }
+.alert.warning { background: var(--cor-alerta); }
+.alert.error { background: var(--cor-erro); }
+
+/* ------------------------------
+   📱 Responsividade
+--------------------------------*/
+@media (max-width: 1200px) { main { grid-template-columns: repeat(8, 1fr); } }
+@media (max-width: 992px)  { main { grid-template-columns: repeat(6, 1fr); } }
+@media (max-width: 768px) {
+  main { grid-template-columns: repeat(4, 1fr); }
+  nav ul { display: none; flex-direction: column; }
+  nav.active ul { display: flex; }
+  .menu-toggle { display: block; }
+}
+@media (max-width: 576px) { main { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 360px) {
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.3rem; }
+}
+
+/* Footer padrão */
+footer {
+  background-color: var(--cor-primaria);
+  color: white;
+  text-align: center;
+  padding: var(--esp-3);
+}
