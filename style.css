@@ -261,3 +261,56 @@ footer {
   text-align: center;
   padding: var(--esp-3);
 }
+/* Menu hamburguer (mobile) */
+.menu-toggle {
+    display: none;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    z-index: 1001; /* garante que fique acima do nav */
+}
+
+@media (max-width: 768px) {
+    nav {
+        position: relative;
+    }
+
+    nav ul {
+        display: none; /* escondido por padrão */
+        flex-direction: column;
+        background-color: var(--cor-primaria);
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        padding: 16px;
+        margin: 0;
+        list-style: none;
+        z-index: 1000;
+    }
+
+    nav.active ul {
+        display: flex; /* mostra quando ativo */
+    }
+
+    nav ul li {
+        margin-bottom: 12px;
+        text-align: center;
+    }
+
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
