@@ -18,12 +18,10 @@
         </nav>
     </header>
     <main>
-        <!-- Imagens no topo -->
         <section id="imagens-topo">
-            <div class="imagens-container">
-                 </div>
+            <div class="imagens-container"></div>
         </section>
-        <!-- Formulário de cadastro -->
+
         <section id="cadastro">
             <h2>Cadastro de Voluntário 🐾</h2>
             <p>Preencha o formulário abaixo para participar dos nossos projetos:</p>
@@ -77,26 +75,6 @@
         <p>&copy; 2025 ONG Cães. Desenvolvido por <strong>Valdir Junior</strong>.</p>
     </footer>
 
-    <script>
-        // Formulário
-        const form = document.getElementById('formCadastro');
-        const mensagem = document.getElementById('mensagem');
-
-        form.addEventListener('submit', function(event) {
-            event.preventDefault();
-            form.style.display = 'none';
-            mensagem.style.display = 'block';
-        });
-
-        // Máscara automática para aniversário
-        const nascimentoInput = document.getElementById('nascimento');
-
-        nascimentoInput.addEventListener('input', function() {
-            let value = this.value.replace(/\D/g, '');
-            if (value.length > 2) value = value.slice(0,2) + '/' + value.slice(2);
-            if (value.length > 5) value = value.slice(0,5) + '/' + value.slice(5,9);
-            this.value = value;
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -1,92 +1,77 @@
-// SPA - Templates das páginas
-const paginas = {
-  inicio: document.getElementById("conteudo").innerHTML,
-  projeto: `
-    <section>
-      <h2>Sobre o Projeto🐾</h2>
-      <p>A ONG Cães atua em toda a Paraíba, promovendo resgate, acolhimento e adoção de cães abandonados.</p>
-      <button id="btnInicio">Voltar ao Início</button>
-    </section>
-  `,
-  cadastro: `
-    <section>
-      <h2>Cadastro de Voluntário</h2>
-      <form id="formCadastro">
-        <input type="text" id="nome" placeholder="Nome completo" required>
-        <input type="email" id="email" placeholder="Email" required>
-        <input type="text" id="telefone" placeholder="Telefone (opcional)">
-        <button type="submit">Enviar</button>
-        <p id="mensagem"></p>
-      </form>
-      <button id="btnInicio">Voltar ao Início</button>
-    </section>
-  `
-};
+document.addEventListener('DOMContentLoaded', function() {
+    // --- Envio do formulário ---
+    const form = document.getElementById('formCadastro');
+    const mensagem = document.getElementById('mensagem');
 
-// Função para carregar páginas
-function carregarPagina(pagina){
-  const conteudo = document.getElementById("conteudo");
-  conteudo.innerHTML = paginas[pagina];
-
-  if(pagina === "cadastro") validarFormulario();
-  if(pagina === "inicio") mostrarSaudacao();
-
-  document.querySelectorAll("nav a").forEach(link => link.classList.remove("ativo"));
-  document.querySelector(`a[data-page="${pagina}"]`)?.classList.add("ativo");
-}
-
-// Navegação SPA
-document.querySelectorAll("nav a, main a[data-page]").forEach(link => {
-  link.addEventListener("click", e=>{
-    e.preventDefault();
-    const pagina = e.target.getAttribute("data-page");
-    if(pagina) carregarPagina(pagina);
-  });
-});
-
-// Botão "Voltar ao Início"
-document.addEventListener("click", e=>{
-  if(e.target && e.target.id === "btnInicio"){
-    carregarPagina("inicio");
-  }
-});
-
-// Formulário - Validação
-function validarFormulario(){
-  const form = document.getElementById("formCadastro");
-  const msg = document.getElementById("mensagem");
-
-  if(!form) return;
-
-  form.addEventListener("submit", e=>{
-    e.preventDefault();
-    const nome = document.getElementById("nome").value.trim();
-    const email = document.getElementById("email").value.trim();
-
-    if(!nome || !email){
-      msg.textContent = "⚠️ Preencha os campos obrigatórios!";
-      msg.style.color = "red";
-      return;
+    if (form) {
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            form.style.display = 'none';
+            mensagem.style.display = 'block';
+        });
     }
 
-    localStorage.setItem("usuario", nome);
-    msg.textContent = "✅ Cadastro realizado com sucesso!";
-    msg.style.color = "green";
-    form.reset();
-  });
-}
+    // --- Máscara automática para data de nascimento ---
+    const nascimentoInput = document.getElementById('nascimento');
+    if (nascimentoInput) {
+        nascimentoInput.addEventListener('input', function() {
+            let value = this.value.replace(/\D/g, '');
+            if (value.length > 2) value = value.slice(0,2) + '/' + value.slice(2);
+            if (value.length > 5) value = value.slice(0,5) + '/' + value.slice(5,9);
+            this.value = value;
+        });
+    }
 
-// Saudação personalizada
-function mostrarSaudacao(){
-  const nome = localStorage.getItem("usuario");
-  if(!nome) return;
+    // --- Máscara automática para CPF ---
+    const cpfInput = document.getElementById('cpf');
+    if (cpfInput) {
+        cpfInput.addEventListener('input', function() {
+            let v = this.value.replace(/\D/g,'');
+            if (v.length > 3) v = v.slice(0,3)+'.'+v.slice(3);
+            if (v.length > 7) v = v.slice(0,7)+'.'+v.slice(7);
+            if (v.length > 11) v = v.slice(0,11)+'-'+v.slice(11,13);
+            this.value = v;
+        });
+    }
 
-  const saudacao = document.createElement("p");
-  saudacao.textContent = `💚 Bem-vindo de volta, ${nome}!`;
-  saudacao.style.fontWeight = "bold";
-  saudacao.style.color = "#2c7a7b";
-  document.getElementById("conteudo")?.appendChild(saudacao);
-}
+    // --- Máscara automática para telefone ---
+    const telefoneInput = document.getElementById('telefone');
+    if (telefoneInput) {
+        telefoneInput.addEventListener('input', function() {
+            let v = this.value.replace(/\D/g,'');
+            if (v.length > 0) v = '('+v;
+            if (v.length > 3) v = v.slice(0,3)+') '+v.slice(3);
+            if (v.length > 10) v = v.slice(0,10)+'-'+v.slice(10,15);
+            this.value = v;
+        });
+    }
 
-// Carrega página inicial
-carregarPagina("inicio");
+    // --- Máscara e busca automática de CEP ---
+    const cepInput = document.getElementById('cep');
+    if (cepInput) {
+        cepInput.addEventListener('input', function() {
+            let v = this.value.replace(/\D/g,'');
+            if (v.length > 5) v = v.slice(0,5)+'-'+v.slice(5,8);
+            this.value = v;
+
+            if (v.replace('-','').length === 8) {
+                buscarCep(v.replace('-',''));
+            }
+        });
+    }
+
+    function buscarCep(cep) {
+        fetch(`https://viacep.com.br/ws/${cep}/json/`)
+            .then(response => response.json())
+            .then(data => {
+                if (!data.erro) {
+                    document.getElementById('endereco').value = data.logradouro || '';
+                    document.getElementById('cidade').value = data.localidade || '';
+                    document.getElementById('estado').value = data.uf || '';
+                } else {
+                    alert('CEP não encontrado.');
+                }
+            })
+            .catch(() => alert('Erro ao buscar o CEP. Tente novamente.'));
+    }
+});
